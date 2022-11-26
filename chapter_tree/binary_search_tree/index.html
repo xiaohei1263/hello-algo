@@ -1413,13 +1413,13 @@
 <p>给定一个待插入元素 <code>num</code> ，为了保持二叉搜索树 “左子树 &lt; 根结点 &lt; 右子树” 的性质，插入操作分为两步：</p>
 <ol>
 <li>
-<p><strong>查找插入位置：</strong> 与查找操作类似，我们从根结点出发，根据当前节点值和 <code>num</code> 的大小关系循环向下搜索，直到越过叶结点（遍历到 <span class="arithmatex">\(\text{null}\)</span> ）时跳出循环；</p>
+<p><strong>查找插入位置：</strong> 与查找操作类似，我们从根结点出发，根据当前结点值和 <code>num</code> 的大小关系循环向下搜索，直到越过叶结点（遍历到 <span class="arithmatex">\(\text{null}\)</span> ）时跳出循环；</p>
 </li>
 <li>
 <p><strong>在该位置插入结点：</strong> 初始化结点 <code>num</code> ，将该结点放到 <span class="arithmatex">\(\text{null}\)</span> 的位置 ；</p>
 </li>
 </ol>
-<p>二叉搜索树不允许存在重复节点，否则将会违背其定义。因此若待插入结点在树中已经存在，则不执行插入，直接返回即可。</p>
+<p>二叉搜索树不允许存在重复结点，否则将会违背其定义。因此若待插入结点在树中已经存在，则不执行插入，直接返回即可。</p>
 <p><img alt="bst_insert" src="../binary_search_tree.assets/bst_insert.png" /></p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Java</label></div>
 <div class="tabbed-content">
@@ -1539,7 +1539,7 @@
 <li><strong>查找元素：</strong> 由于数组是乱序的，因此需要遍历数组来确定，使用 <span class="arithmatex">\(O(n)\)</span> 时间；</li>
 <li><strong>插入元素：</strong> 只需将元素添加至数组尾部即可，使用 <span class="arithmatex">\(O(1)\)</span> 时间；</li>
 <li><strong>删除元素：</strong> 先查找元素，使用 <span class="arithmatex">\(O(\log n)\)</span> 时间，再在数组中删除该元素，使用 <span class="arithmatex">\(O(n)\)</span> 时间；</li>
-<li><strong>获取最小 / 最大元素：</strong> 需要遍历数组来确定，使用 <span class="arithmatex">\(O(1)\)</span> 时间；</li>
+<li><strong>获取最小 / 最大元素：</strong> 需要遍历数组来确定，使用 <span class="arithmatex">\(O(n)\)</span> 时间；</li>
 </ul>
 <p>为了得到先验信息，我们也可以预先将数组元素进行排序，得到一个「排序数组」，此时操作效率为：</p>
 <ul>

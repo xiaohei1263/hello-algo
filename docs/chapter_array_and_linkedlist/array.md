@@ -47,6 +47,13 @@ comments: true
     arr = [0] * 5  # [ 0, 0, 0, 0, 0 ]
     nums = [1, 3, 2, 5, 4]  
     ```
+    
+=== "Go"
+    ```Go title="array.go"
+    // 初始化数组
+    arr := []int{1, 2, 3, 4, 5}
+	var num = []int{1, 2, 3, 4, 5}
+    ```
 
 ## 数组优点
 
@@ -115,6 +122,17 @@ elementAddr = firtstElementAddr + elementLength * elementIndex
         return random_num
     ```
 
+=== "Go"
+
+    ```Go title="array.go"
+    //随机访问元素
+       func randomAccess(nums []int) int {
+	        rand.Seed(time.Now().UnixNano()) //将时间戳设置成种子数
+	        RandomIndex := rand.Intn(5) // 0-5之间的随机数
+	        return nums[RandomIndex]
+       }
+    ```
+
 ## 数组缺点
 
 **数组在初始化后长度不可变。** 由于系统无法保证数组之后的内存空间是可用的，因此数组长度无法扩展。而若希望扩容数组，则需新建一个数组，然后把原数组元素依次拷贝到新数组，在数组很大的情况下，这是非常耗时的。
@@ -181,6 +199,16 @@ elementAddr = firtstElementAddr + elementLength * elementIndex
             res[i] = nums[i]
         # 返回扩展后的新数组
         return res
+    ```
+=== "Go"
+
+    ```Go title="array.go"
+    //扩展数组长度
+    func extend(nums []int, enlarge int) []int {
+	    res := make([]int, len(nums)+enlarge)
+	    copy(res, nums)
+	    return res
+    }
     ```
 
 **数组中插入或删除元素效率低下。** 假设我们想要在数组中间某位置插入一个元素，由于数组元素在内存中是 “紧挨着的” ，它们之间没有空间再放任何数据。因此，我们不得不将此索引之后的所有元素都向后移动一位，然后再把元素赋值给该索引。删除元素也是类似，需要把此索引之后的元素都向前移动一位。总体看有以下缺点：
@@ -276,6 +304,18 @@ elementAddr = firtstElementAddr + elementLength * elementIndex
         for i in range(index, len(nums) - 1):
             nums[i] = nums[i + 1]
     ```
+=== "Go"
+    ```Go title="array.go"
+    // 在数组的索引 index 处插入元素 num
+    func insert(nums []int, index, num int) {
+	    copy(nums[index+1:], nums[index:])
+	    nums[index] = num
+    }
+    //删除索引 index 处元素
+    func remove(nums []int, index int) {
+	    copy(nums[index:], nums[index+1:])
+    }
+    ```
 
 ## 数组常用操作
 
@@ -341,6 +381,25 @@ elementAddr = firtstElementAddr + elementLength * elementIndex
         for num in nums:
             count += 1
     ```
+    
+=== "Go"
+
+    ```Go title="array.go"
+    //遍历数组
+    func traverse(nums []int) {
+	    count := 0
+        //通过索引遍历数组
+	    for i := 0; i < len(nums); i++ {
+		    count++
+		    fmt.Printf("%d ", nums[i])
+	    }
+        //直接遍历数组
+	    for i := range nums {
+		    count++
+		    fmt.Printf("%d ", nums[i])
+	    }
+    }
+    ```
 
 **数组查找。** 通过遍历数组，查找数组内的指定元素，并输出对应索引。
 
@@ -392,6 +451,20 @@ elementAddr = firtstElementAddr + elementLength * elementIndex
             if nums[i] == target:
                 return i
         return -1
+    ```
+    
+=== "Go"
+
+    ```Go title="array.go"
+    //在数组中查找指定元素 
+    func find(nums []int, target int) int {
+	    for i := range nums {
+		    if nums[i] == target {
+			    return i
+		    }
+	    }
+	    return -1
+    }
     ```
 
 ## 数组典型应用
